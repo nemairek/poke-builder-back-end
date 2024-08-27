@@ -13,13 +13,10 @@ router.get('/search/:pokename', async (req, res) => {
         // const response = await fetch(`https://pokeapi.co/api/v2/pokemon/pikachu/`);
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${req.params.pokename}`);
         const pokemon = await response.json();
-        // const bioResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
-        // const pokemonBio = await bioResponse.json();
-        console.log(pokemonBio)
        res.status(200).json(pokemon)
     } catch (error) {
       res.status(500).json(error);
     }
 });
 
-module.exports = router
+module.exports = router;
