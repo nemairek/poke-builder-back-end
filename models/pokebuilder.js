@@ -14,7 +14,7 @@ const commentSchema = new mongoose.Schema(
 
 const pokebuilderSchema = new mongoose.Schema(
     {
-        id: {
+        pokeId: {
             type: Number,
             required: true,
         },
@@ -22,10 +22,14 @@ const pokebuilderSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      type: {
+      type: [{
         type: String,
         required: true,
-      },
+      }],
+      abilities: [{
+        type: String,
+        required: true,
+      }],
       image: String, 
       ownedBy: [{
         type: mongoose.Schema.Types.ObjectId,
