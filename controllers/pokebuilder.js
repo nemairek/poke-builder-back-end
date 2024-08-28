@@ -58,8 +58,8 @@ router.delete('/:pokeId', async (req, res) => {
         return res.status(403).send("You're not allowed to do that!");
       }
   
-      const deletedPokemon = await Pokebuilder.findByIdAndDelete(req.params.pokeId);
-      res.status(200).json(deletedPokemon);
+      const releasedPokemon = await Pokebuilder.findByIdAndDelete(req.params.pokeId);
+      res.status(200).json(releasedPokemon);
     } catch (error) {
       res.status(500).json(error);
     }
