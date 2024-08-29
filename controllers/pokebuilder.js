@@ -45,7 +45,6 @@ router.post('/', async (req, res) => {
 
     res.status(201).json(pokemon);
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: error.message });
   }
 });
@@ -55,18 +54,15 @@ router.delete('/:pokeId', async (req, res) => {
   console.log(req.params.pokeId)
   try {
     let pokemon = await Pokebuilder.findById(req.params.pokeId);
-console.log(pokemon)
     // if (!pokemon.ownedBy.equals(req.user._id)) {
     //   return res.status(403).send("You're not allowed to do that!");
     // }
     if (pokemon.ownedBy.includes(req.user._id)) {
       pokemon.ownedBy.remove(req.user._id)
       await pokemon.save()
-      console.log(pokemon)
-      console.log(req.user._id)
       res.status(200).json(pokemon);
     }
-    
+
   } catch (error) {
     res.status(500).json(error);
   }
@@ -77,10 +73,8 @@ console.log(pokemon)
 
 router.post('/:pokeId/comments', async (req, res) => {
   try {
-    console.log(req.body)
     req.body.author = req.user._id;
     const poke = await Pokebuilder.findById(req.params.pokeId);
-    console.log(poke)
     poke.comments.push(req.body);
     await poke.save();
     res.status(201).json(poke);
@@ -89,6 +83,33 @@ router.post('/:pokeId/comments', async (req, res) => {
   }
 });
 
+
+router.put('/:pokeId/comments/:commentId', async (req, res) => {
+  try {
+    req.body.author = req.user._id;
+    const poke = await Pokebuilder.findById(req.params.pokeId);
+    const pokeComment = poke.comments.id(req.params.commentId);
+    pokeComment.text = req.body.text;
+    await poke.save();
+    res.status(201).json(poke);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.delete('/:pokeId/comments/:commentId', async (req, res) => {
+  console.log(req.params.pokeId)
+  try {
+    const poke = await Pokebuilder.findById(req.params.pokeId);
+    let comment = poke.comments.id(req.params.commentId)
+    console.log(comment)
+    poke.comments.remove(comment);
+    await poke.save();
+    res.status(201).json(poke);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 
 
