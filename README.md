@@ -41,12 +41,6 @@
 
 </details>
 
-<details open>
-  <summary> Deployed Link (SIMON) </summary>
-  <a href="https://game-trax-5085ddcbb9e3.herokuapp.com/"
-    > https:https://game-trax-5085ddcbb9e3.herokuapp.com/ </a
-  >
-</details>
 
 ## :satellite: Upcoming Features
 
