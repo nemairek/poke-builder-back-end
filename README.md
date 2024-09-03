@@ -1,6 +1,6 @@
 <div id="header" align="center">
 
-  <img src=https://pm1.aminoapps.com/6832/9f5f82bd29c7174aef24b76529ea3b0599913a91v2_hq.jpg width="800" height="400">
+  
 
 </div>
 
@@ -19,15 +19,6 @@
  This is the Poke-builder back-end, where data is stored for usage, such as the pokemon in the team, the user information, and comments.
   </div>
 
-  ## :camera_flash: Screenshot
-
- <img src =
-    ![image](https://github.com/user-attachments/assets/a145da44-5da3-45c4-b02e-b959b7e088d9)
-
-
-
-  />
- 
   ## :computer: Technologies Used
   A screenshot of your app's landing page and any other screenshots of interest.
 

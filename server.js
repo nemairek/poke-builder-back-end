@@ -13,7 +13,12 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
-app.use(cors());
+app.use(cors({
+    origin: ["https://poke-builder.netlify.app"],
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+    origin: true,
+  }));
 app.use(express.json());
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'public')));
