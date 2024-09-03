@@ -15,6 +15,8 @@ mongoose.connection.on('connected', () => {
 });
 app.use(cors());
 app.use(express.json());
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/test-jwt', testJWTRouter);
 app.use('/users', usersRouter);
