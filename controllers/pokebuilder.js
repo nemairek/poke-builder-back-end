@@ -53,9 +53,6 @@ router.post('/', async (req, res) => {
 router.delete('/:pokeId', async (req, res) => {
   try {
     let pokemon = await Pokebuilder.findById(req.params.pokeId);
-    // if (!pokemon.ownedBy.equals(req.user._id)) {
-    //   return res.status(403).send("You're not allowed to do that!");
-    // }
     if (pokemon.ownedBy.includes(req.user._id)) {
       pokemon.ownedBy.remove(req.user._id)
       await pokemon.save()
