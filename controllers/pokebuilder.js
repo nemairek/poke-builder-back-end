@@ -51,7 +51,6 @@ router.post('/', async (req, res) => {
 
 
 router.delete('/:pokeId', async (req, res) => {
-  console.log(req.params.pokeId)
   try {
     let pokemon = await Pokebuilder.findById(req.params.pokeId);
     // if (!pokemon.ownedBy.equals(req.user._id)) {
@@ -98,11 +97,9 @@ router.put('/:pokeId/comments/:commentId', async (req, res) => {
 });
 
 router.delete('/:pokeId/comments/:commentId', async (req, res) => {
-  console.log(req.params.pokeId)
   try {
     const poke = await Pokebuilder.findById(req.params.pokeId);
     let comment = poke.comments.id(req.params.commentId)
-    console.log(comment)
     poke.comments.remove(comment);
     await poke.save();
     res.status(201).json(poke);
